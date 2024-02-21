@@ -4,7 +4,7 @@ const DevoteeController = {
   getAllDevotees: async (req, res) => {
     try {
       const devotees = await devoteeService.getAllDevotees();
-      res.json(devotees);
+      res.status(200).json(devotees);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

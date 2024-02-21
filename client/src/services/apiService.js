@@ -6,10 +6,17 @@ const apiService = axios.create({
 });
 
 export const signIn = async (email, password) => {
-  const check = apiUrl;
   try {
-    return await apiService.post("/login", { email, password });
+    return await apiService.post("/signIn", { email, password });
+  } catch (error) {}
+};
+
+export const getAllDevotees = async (email, password) => {
+  try {
+    debugger
+    const response = await apiService.get("/getAllDevotees");
+    return response.data;
   } catch (error) {
-    throw new Error("Failed to sign in");
+    return true;
   }
 };
