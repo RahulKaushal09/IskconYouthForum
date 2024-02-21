@@ -11,11 +11,10 @@ const devoteeSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
   },
-  password: {
-    type: String,
-  },
+  // password: {
+  //   type: String,
+  // },
   address: {
     type: String,
   },
@@ -27,8 +26,8 @@ const devoteeSchema = new mongoose.Schema({
   },
 });
 
-devoteeSchema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 12);
-});
+// devoteeSchema.pre("save", async function () {
+//   this.password = await bcrypt.hash(this.password, 12);
+// });
 
 module.exports = mongoose.model("Devotee", devoteeSchema);
