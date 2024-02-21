@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // react-router components
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, NavLink, Navigate } from "react-router-dom";
 
 // prop-types is a library for typechecking of props.
 import PropTypes from "prop-types";
@@ -38,7 +38,15 @@ import {
   setOpenConfigurator,
 } from "../../../context";
 
+import LogoutIcon from "@mui/icons-material/Logout";
+import Tooltip from "@mui/material/Tooltip";
+import { blue } from "@mui/material/colors";
+import { colors } from "@mui/material";
+import { withTheme } from "@emotion/react";
+import { useCookies } from "react-cookie";
+
 function DashboardNavbar({ absolute, light, isMini }) {
+  const [cookies, removeCookie] = useCookies([]);
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useMaterialUIController();
   const {
@@ -127,6 +135,11 @@ function DashboardNavbar({ absolute, light, isMini }) {
     },
   });
 
+  const handleSignOutClick = () => {
+    debugger;
+    removeCookie("token");
+  };
+
   return (
     <AppBar
       position={absolute ? "absolute" : navbarType}
@@ -152,14 +165,14 @@ function DashboardNavbar({ absolute, light, isMini }) {
           <MDBox sx={(theme) => navbarRow(theme, { isMini })}>
             {/* <MDBox pr={1}>
               <MDInput label="Search here" />
-            </MDBox>
+            </MDBox> */}
             <MDBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in/basic">
+              {/* <Link to="/authentication/sign-in/basic">
                 <IconButton sx={navbarIconButton} size="small" disableRipple>
                   <Icon sx={iconsStyle}>account_circle</Icon>
                 </IconButton>
-              </Link>
-              <IconButton
+              </Link> */}
+              {/* <IconButton
                 size="small"
                 disableRipple
                 color="inherit"
@@ -169,8 +182,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 <Icon sx={iconsStyle} fontSize="medium">
                   {miniSidenav ? "menu_open" : "menu"}
                 </Icon>
-              </IconButton>
-              <IconButton
+              </IconButton> */}
+              {/* <IconButton
                 size="small"
                 disableRipple
                 color="inherit"
@@ -178,21 +191,29 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 onClick={handleConfiguratorOpen}
               >
                 <Icon sx={iconsStyle}>settings</Icon>
-              </IconButton>
+              </IconButton> */}
+
               <IconButton
-                size="small"
+                size="large"
                 disableRipple
                 color="inherit"
                 sx={navbarIconButton}
                 aria-controls="notification-menu"
                 aria-haspopup="true"
                 variant="contained"
-                onClick={handleOpenMenu}
+                onClick={handleSignOutClick}
               >
-                <Icon sx={iconsStyle}>notifications</Icon>
+                {/* <Icon sx={iconsStyle}>notifications</Icon> */}
+                <Tooltip title="Sign Out">
+                  <NavLink key="sign-in" to="/authentication/sign-in">
+                    <LogoutIcon
+                      sx={{ ...iconsStyle, color: "blue", cursor: "pointer" }}
+                    />
+                  </NavLink>
+                </Tooltip>
               </IconButton>
               {renderMenu()}
-            </MDBox> */}
+            </MDBox>
           </MDBox>
         )}
       </Toolbar>

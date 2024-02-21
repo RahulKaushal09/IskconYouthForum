@@ -11,12 +11,26 @@ export const signIn = async (email, password) => {
   } catch (error) {}
 };
 
+export const verifyLoggedInUser = async (token) => {
+  try {
+    const response = await apiService.post("/", { token });
+    return response.data.status;
+  } catch (error) {}
+};
+
 export const getAllDevotees = async (email, password) => {
   try {
-    debugger
+    debugger;
     const response = await apiService.get("/getAllDevotees");
     return response.data;
   } catch (error) {
     return true;
   }
+};
+
+export const addDevotee = async (devoteeData) => {
+  try {
+    const response = await apiService.post("/addDevotee", devoteeData);
+    return response.data;
+  } catch (error) {}
 };

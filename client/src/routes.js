@@ -4,7 +4,7 @@ import Tables from "../src/layouts/tables";
 // import RTL from "layouts/rtl";
 // import Notifications from "layouts/notifications";
 // import Profile from "layouts/profile";
-// import SignIn from "layouts/authentication/sign-in";
+import SignIn from "../src/layouts/authentication/sign-in";
 // import SignUp from "layouts/authentication/sign-up";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
@@ -64,14 +64,14 @@ const routes = [
   //   route: "/profile",
   //   component: <Profile />,
   // },
-  // {
-  //   type: "collapse",
-  //   name: "Sign In",
-  //   key: "sign-in",
-  //   icon: <Icon fontSize="small">login</Icon>,
-  //   route: "/authentication/sign-in",
-  //   component: <SignIn />,
-  // },
+  {
+    // type: "collapse",
+    name: "Sign In",
+    key: "sign-in",
+    icon: <Icon fontSize="small">login</Icon>,
+    route: "/authentication/sign-in",
+    component: <SignIn />,
+  },
   // {
   //   type: "collapse",
   //   name: "Sign Up",
