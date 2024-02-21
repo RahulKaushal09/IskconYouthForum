@@ -7,7 +7,8 @@ const apiService = axios.create({
 
 export const signIn = async (email, password) => {
   try {
-    return await apiService.post("/signIn", { email, password });
+    const res = await apiService.post("/signIn", { email, password });
+    return res.data;
   } catch (error) {}
 };
 

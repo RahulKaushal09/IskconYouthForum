@@ -60,7 +60,6 @@ function Tables() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    debugger;
     async function fetchTableData() {
       const tableData = await devoteesTableData();
       setColumns(tableData.columns);
@@ -68,7 +67,6 @@ function Tables() {
     }
 
     async function verify(token) {
-      debugger;
       const response = await verifyLoggedInUser(token);
       if (response) {
         fetchTableData();

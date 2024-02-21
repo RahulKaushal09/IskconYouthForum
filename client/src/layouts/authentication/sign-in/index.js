@@ -38,8 +38,7 @@ function Basic() {
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
-  const handleSignIn = async (event) => {
-    event.preventDefault();
+  const handleSignIn = async () => {
     // if (email == "" && password == "") {
     //   toaster("Email and password is required");
     // } else if (email == "") {
@@ -48,8 +47,8 @@ function Basic() {
     //   toaster("Password is required");
     // } else {
     const res = await signIn(email, password);
-    if (res.data.success) {
-      Cookies.set("token", res.data.token, { expires: 30 });
+    if (res.success) {
+      Cookies.set("token", res.token, { expires: 30 });
       setIsLoggedIn(true);
     }
     //  else {

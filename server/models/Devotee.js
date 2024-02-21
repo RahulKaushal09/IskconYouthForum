@@ -12,9 +12,9 @@ const devoteeSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  // password: {
-  //   type: String,
-  // },
+  password: {
+    type: String,
+  },
   address: {
     type: String,
   },
