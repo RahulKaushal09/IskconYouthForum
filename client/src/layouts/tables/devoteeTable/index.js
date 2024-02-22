@@ -1,28 +1,15 @@
-// @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-
-// Material Dashboard 2 React components
-import MDBox from "../../components/MDBox";
-import MDTypography from "../../components/MDTypography";
-
-// Material Dashboard 2 React example components
-import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
-import Footer from "../../examples/Footer";
-import DataTable from "../../examples/Tables/DataTable";
-
-// Data
-import devoteesTableData from "./data/devoteesTableData";
+import MDBox from "../../../components/MDBox";
+import MDTypography from "../../../components/MDTypography";
+import DashboardLayout from "../../../examples/LayoutContainers/DashboardLayout";
+import DashboardNavbar from "../../../examples/Navbars/DashboardNavbar";
+import Footer from "../../../examples/Footer";
+import DataTable from "../../../examples/Tables/DataTable";
+import devoteesTableData from "../devoteeTable/data/devoteeTableData";
 import { useEffect, useState } from "react";
-// import projectsTableData from "layouts/tables/data/projectsTableData";
-import { Loader, Placeholder } from "rsuite";
-import axios from "axios";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import MDButton from "../../components/MDButton";
-
+import MDButton from "../../../components/MDButton";
 import Icon from "@mui/material/Icon";
-
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
@@ -30,11 +17,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
 import TextField from "@mui/material/TextField";
-import { addDevotee, verifyLoggedInUser } from "../../services/apiService";
-import { useNavigate, Navigate } from "react-router-dom";
+import { addDevotee, verifyLoggedInUser } from "../../../services/apiService";
+import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-function Tables() {
+export default function Table() {
   const style = {
     position: "absolute",
     top: "50%",
@@ -42,7 +29,6 @@ function Tables() {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    // border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
@@ -56,7 +42,7 @@ function Tables() {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const [verified, setVerified] = useState(true);
-  const [position, setPosition] = useState("right"); // or 'left' depending on your requirement
+  const [position, setPosition] = useState("right");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -98,7 +84,6 @@ function Tables() {
   };
 
   const handleAddDevotee = async () => {
-    debugger
     const devoteeData = {
       name: name,
       dob: dob,
@@ -106,9 +91,7 @@ function Tables() {
       email: email,
     };
     const res = await addDevotee(devoteeData);
-    debugger
     if (res._id) {
-      debugger;
     }
   };
 
@@ -262,4 +245,4 @@ function Tables() {
   );
 }
 
-export default Tables;
+// export default Tables;

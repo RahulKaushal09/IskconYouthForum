@@ -1,59 +1,19 @@
 import { useState, useEffect, useMemo } from "react";
-
-// react-router components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-
-// @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Icon from "@mui/material/Icon";
-
-// Material Dashboard 2 React components
-import MDBox from "../src/components/MDBox";
-
-// Material Dashboard 2 React example components
 import Sidenav from "../src/examples/Sidenav";
 import Configurator from "../src/examples/Configurator";
-
-// Material Dashboard 2 React themes
 import theme from "../src/assets/theme";
-import themeRTL from "../src/assets/theme/theme-rtl";
-
-// Material Dashboard 2 React Dark Mode themes
 import themeDark from "../src/assets/theme-dark";
-import themeDarkRTL from "../src/assets/theme-dark/theme-rtl";
-
-// RTL plugins
 import rtlPlugin from "stylis-plugin-rtl";
-import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-
-// Material Dashboard 2 React routes
 import routes from "../src/routes";
-
-// Material Dashboard 2 React contexts
-import {
-  useMaterialUIController,
-  setMiniSidenav,
-  setOpenConfigurator,
-} from "../src/context";
-
-// Images
-import brandWhite from "../src/assets/images/logo-ct.png";
-import brandDark from "../src/assets/images/logo-ct-dark.png";
+import { useMaterialUIController, setMiniSidenav } from "../src/context";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
-  const {
-    miniSidenav,
-    direction,
-    layout,
-    openConfigurator,
-    sidenavColor,
-    transparentSidenav,
-    whiteSidenav,
-    darkMode,
-  } = controller;
+  const { miniSidenav, direction, layout, sidenavColor, darkMode } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
@@ -83,10 +43,6 @@ export default function App() {
       setOnMouseEnter(false);
     }
   };
-
-  // Change the openConfigurator state
-  // const handleConfiguratorOpen = () =>
-  //   setOpenConfigurator(dispatch, !openConfigurator);
 
   // Setting the dir attribute for the body element
   useEffect(() => {
@@ -119,80 +75,19 @@ export default function App() {
       return null;
     });
 
-  // const configsButton = (
-  //   <MDBox
-  //     display="flex"
-  //     justifyContent="center"
-  //     alignItems="center"
-  //     width="3.25rem"
-  //     height="3.25rem"
-  //     bgColor="white"
-  //     shadow="sm"
-  //     borderRadius="50%"
-  //     position="fixed"
-  //     right="2rem"
-  //     bottom="2rem"
-  //     zIndex={99}
-  //     color="dark"
-  //     sx={{ cursor: "pointer" }}
-  //     onClick={handleConfiguratorOpen}
-  //   >
-  //     <Icon fontSize="small" color="inherit">
-  //       settings
-  //     </Icon>
-  //   </MDBox>
-  // );
-
   return (
-    //  direction === "rtl" ?
-    //  (
-    //   <CacheProvider value={rtlCache}>
-    //     <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
-    //       <CssBaseline />
-    //       {layout === "dashboard" && (
-    //         <>
-    //           <Sidenav
-    //             color={sidenavColor}
-    //             brand={
-    //               (transparentSidenav && !darkMode) || whiteSidenav
-    //                 ? brandDark
-    //                 : brandWhite
-    //             }
-    //             brandName="Material Dashboard 2"
-    //             routes={routes}
-    //             onMouseEnter={handleOnMouseEnter}
-    //             onMouseLeave={handleOnMouseLeave}
-    //           />
-    //           <Configurator />
-    //           {/* {configsButton} */}
-    //         </>
-    //       )}
-    //       {layout === "vr" && <Configurator />}
-    //       <Routes>
-    //         {getRoutes(routes)}
-    //         <Route path="*" element={<Navigate to="/dashboard" />} />
-    //       </Routes>
-    //     </ThemeProvider>
-    //   </CacheProvider>
-    // ) : (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
       {layout === "dashboard" && (
         <>
           <Sidenav
             color={sidenavColor}
-            // brand={
-            //   (transparentSidenav && !darkMode) || whiteSidenav
-            //     ? brandDark
-            //     : brandWhite
-            // }
             brandName="IYF Admin"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
           />
           <Configurator />
-          {/* {configsButton} */}
         </>
       )}
       {layout === "vr" && <Configurator />}
