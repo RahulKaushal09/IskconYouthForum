@@ -1,6 +1,15 @@
+import MKBox from "../../componentsKit/MKBox";
 import DefaultNavbar from "../../kitEx/Navbars/DefaultNavbar";
 
 import kitRoutes from "../../kitRoutes";
+
+import bgImage from "../../kitAssests/images/bg-presentation2.png";
+import { Card, Container, Grid } from "@mui/material";
+import MKTypography from "../../componentsKit/MKTypography";
+import Counters from "../../pages/Presentation/sections/Counters";
+import Information from "../../pages/Presentation/sections/Information";
+import DefaultFooter from "../../examples/Footers/DefaultFooter";
+import footerRoutes from "../../../src/footer.routes";
 
 function Presentation() {
   return (
@@ -15,6 +24,67 @@ function Presentation() {
         }}
         sticky
       />
+
+      <MKBox
+        minHeight="75vh"
+        width="100%"
+        sx={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "top",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <Container>
+          <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
+            <MKTypography
+              variant="h1"
+              color="white"
+              mt={-6}
+              mb={1}
+              sx={({ breakpoints, typography: { size } }) => ({
+                [breakpoints.down("md")]: {
+                  fontSize: size["3xl"],
+                },
+              })}
+            >
+              ISKCON Youth Forum{" "}
+            </MKTypography>
+            <MKTypography
+              variant="body1"
+              color="white"
+              fontWeight="bolder"
+              fontSize="19px"
+              textAlign="center"
+              px={{ xs: 6, lg: 12 }}
+              mt={1}
+            >
+              Your Hub for Spiritual Growth & Community. Engage in discussions,
+              service projects, and events tailored for youth. Join us in a
+              journey of self-discovery and service
+            </MKTypography>
+          </Grid>
+        </Container>
+      </MKBox>
+      <Card
+        sx={{
+          p: 2,
+          mx: { xs: 2, lg: 3 },
+          mt: -8,
+          mb: 4,
+          backgroundColor: ({ palette: { white }, functions: { rgba } }) =>
+            rgba(white.main, 0.8),
+          backdropFilter: "saturate(200%) blur(30px)",
+          boxShadow: ({ boxShadows: { xxl } }) => xxl,
+        }}
+      >
+        <Counters />
+        <Information />
+      </Card>
+      <MKBox pt={6} px={1} mt={6}>
+        <DefaultFooter content={footerRoutes} />
+      </MKBox>
     </>
   );
 }

@@ -19,10 +19,10 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 
 // Material Kit 2 React components
-import MKBox from "components/MKBox";
+import MKBox from "../../../componentsKit/MKBox";
 
 // Material Kit 2 React examples
-import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
+import DefaultCounterCard from "../../../kitEx/Cards/CounterCards/DefaultCounterCard";
 
 function Counters() {
   return (
@@ -31,27 +31,33 @@ function Counters() {
         <Grid container item xs={12} lg={9} sx={{ mx: "auto" }}>
           <Grid item xs={12} md={4}>
             <DefaultCounterCard
-              count={70}
+              count={500}
               suffix="+"
-              title="Coded Elements"
-              description="From buttons, to inputs, navbars, alerts or cards, you are covered"
+              title="Active Participants"
+              description="Join a thriving community of over 500 dedicated youth members actively engaging in discussions, events, and service projects."
             />
           </Grid>
           <Grid item xs={12} md={4} display="flex">
-            <Divider orientation="vertical" sx={{ display: { xs: "none", md: "block" }, mx: 0 }} />
-            <DefaultCounterCard
-              count={15}
-              suffix="+"
-              title="Design Blocks"
-              description="Mix the sections, change the colors and unleash your creativity"
+            <Divider
+              orientation="vertical"
+              sx={{ display: { xs: "none", md: "block" }, mx: 0 }}
             />
-            <Divider orientation="vertical" sx={{ display: { xs: "none", md: "block" }, ml: 0 }} />
+            <DefaultCounterCard
+              count={1000}
+              suffix="+"
+              title="Interactive Sessions"
+              description="Experience over 1000 dynamic sessions designed to deepen your spiritual understanding, enhance your skills, and foster meaningful connections."
+            />
+            <Divider
+              orientation="vertical"
+              sx={{ display: { xs: "none", md: "block" }, ml: 0 }}
+            />
           </Grid>
           <Grid item xs={12} md={4}>
             <DefaultCounterCard
               count={4}
-              title="Pages"
-              description="Save 3-4 weeks of work when you use our pre-made pages for your website"
+              title="Annual Conferences"
+              description="Participate in our annual conferences, featuring workshops, seminars, and keynote speakers, creating opportunities for personal growth and collective inspiration"
             />
           </Grid>
         </Grid>
