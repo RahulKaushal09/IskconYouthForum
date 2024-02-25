@@ -24,6 +24,7 @@ const AuthService = {
       const response = {
         token: token,
         success: true,
+        role: devotee.role != null ? devotee.role : null,
       };
       return response;
     } catch (error) {

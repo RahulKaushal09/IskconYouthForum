@@ -16,7 +16,7 @@ Coded by www.creative-tim.com
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -44,14 +44,94 @@ import routes from "../../../kitRoutes";
 
 // Images
 import bgImage from "../../../kitAssests/images/signIn-background.png";
+import { validateEmail } from "../../../utils/validation";
+import { signIn } from "../../../services/authApi";
+
+// react toastify
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [emailSuccess, setEmailSuccess] = useState(false);
+
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordSuccess, setPasswordSuccess] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleEmailChange = (event) => {
+    const emailValue = event.target.value;
+    setEmail(emailValue);
+    if (emailValue == "") {
+      setEmailError(true);
+      setEmailSuccess(false);
+    } else {
+      const isValidEmail = validateEmail(emailValue);
+      if (isValidEmail) {
+        setEmailError(false);
+        setEmailSuccess(true);
+      } else {
+        setEmailError(true);
+        setEmailSuccess(false);
+      }
+    }
+  };
+
+  const handlePasswordChange = (event) => {
+    const passwordValue = event.target.value;
+    setPassword(passwordValue);
+    if (passwordValue == "") {
+      setPasswordError(true);
+      setPasswordSuccess(false);
+    } else {
+      setPasswordError(false);
+      setPasswordSuccess(true);
+    }
+  };
+
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
+
+  const handleSignIn = async () => {
+    const res = await signIn(email, password);
+    if (res.success) {
+      navigate("/devotees", { replace: true });
+    } else {
+      toast.error("Wrong email or password", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      {/* Same as */}
+      <ToastContainer />
       <DefaultNavbar routes={routes} transparent light />
       <MKBox
         position="absolute"
@@ -110,51 +190,30 @@ function SignInBasic() {
                 >
                   Sign in
                 </MKTypography>
-                <Grid
-                  container
-                  spacing={3}
-                  justifyContent="center"
-                  sx={{ mt: 1, mb: 2 }}
-                >
-                  <Grid item xs={2}>
-                    <MKTypography
-                      component={MuiLink}
-                      href="#"
-                      variant="body1"
-                      color="white"
-                    >
-                      <FacebookIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography
-                      component={MuiLink}
-                      href="#"
-                      variant="body1"
-                      color="white"
-                    >
-                      <GitHubIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <MKTypography
-                      component={MuiLink}
-                      href="#"
-                      variant="body1"
-                      color="white"
-                    >
-                      <GoogleIcon color="inherit" />
-                    </MKTypography>
-                  </Grid>
-                </Grid>
               </MKBox>
               <MKBox pt={4} pb={3} px={3}>
                 <MKBox component="form" role="form">
                   <MKBox mb={2}>
-                    <MKInput type="email" label="Email" fullWidth />
+                    <MKInput
+                      type="email"
+                      label="Email"
+                      onChange={handleEmailChange}
+                      value={email}
+                      fullWidth
+                      error={emailError}
+                      success={emailSuccess}
+                    />
                   </MKBox>
                   <MKBox mb={2}>
-                    <MKInput type="password" label="Password" fullWidth />
+                    <MKInput
+                      type="password"
+                      label="Password"
+                      onChange={handlePasswordChange}
+                      value={password}
+                      fullWidth
+                      error={passwordError}
+                      success={passwordSuccess}
+                    />
                   </MKBox>
                   <MKBox display="flex" alignItems="center" ml={-1}>
                     <Switch
@@ -172,7 +231,13 @@ function SignInBasic() {
                     </MKTypography>
                   </MKBox>
                   <MKBox mt={4} mb={1}>
-                    <MKButton variant="gradient" color="info" fullWidth>
+                    <MKButton
+                      variant="gradient"
+                      color="info"
+                      fullWidth
+                      onClick={handleSignIn}
+                      disabled={emailSuccess && passwordSuccess ? false : true}
+                    >
                       sign in
                     </MKButton>
                   </MKBox>

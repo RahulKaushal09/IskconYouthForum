@@ -24,6 +24,9 @@ const devoteeSchema = new mongoose.Schema({
   dob: {
     type: Date,
   },
+  role: {
+    type: Number,
+  },
 });
 
 // devoteeSchema.pre("save", async function () {

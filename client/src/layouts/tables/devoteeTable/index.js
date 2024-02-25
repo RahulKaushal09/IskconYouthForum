@@ -22,80 +22,81 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 export default function Table() {
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 4,
-  };
+  debugger;
+  // const style = {
+  //   position: "absolute",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -50%)",
+  //   width: 400,
+  //   bgcolor: "background.paper",
+  //   boxShadow: 24,
+  //   p: 4,
+  // };
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState([]);
   const [open, setOpen] = useState(false);
-  const [cookies, removeCookie] = useCookies([]);
-  const [name, setName] = useState("");
-  const [dob, setDob] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  // const [cookies, removeCookie] = useCookies([]);
+  // const [name, setName] = useState("");
+  // const [dob, setDob] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
 
-  const [verified, setVerified] = useState(true);
+  // const [verified, setVerified] = useState(true);
   const [position, setPosition] = useState("right");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchTableData() {
-      const tableData = await devoteesTableData();
-      setColumns(tableData.columns);
-      setRows(tableData.rows);
-    }
+  // useEffect(() => {
+  //   async function fetchTableData() {
+  //     const tableData = await devoteesTableData();
+  //     setColumns(tableData.columns);
+  //     setRows(tableData.rows);
+  //   }
 
-    async function verify(token) {
-      const response = await verifyLoggedInUser(token);
-      if (response) {
-        fetchTableData();
-        setVerified(true);
-      } else {
-        debugger;
-        setVerified(false);
-        removeCookie("token");
-        navigate("/authentication/sign-in", { replace: true });
-      }
-    }
+  //   async function verify(token) {
+  //     const response = await verifyLoggedInUser(token);
+  //     if (response) {
+  //       fetchTableData();
+  //       setVerified(true);
+  //     } else {
+  //       debugger;
+  //       setVerified(false);
+  //       removeCookie("token");
+  //       navigate("/authentication/sign-in", { replace: true });
+  //     }
+  //   }
 
-    async function getTokenCookie() {
-      const token = cookies.token;
+  //   async function getTokenCookie() {
+  //     const token = cookies.token;
 
-      if (token == "undefined") {
-        setVerified(false);
-        navigate("/authentication/sign-in", { replace: true });
-      } else {
-        verify(token);
-      }
-    }
+  //     if (token == "undefined") {
+  //       setVerified(false);
+  //       navigate("/authentication/sign-in", { replace: true });
+  //     } else {
+  //       verify(token);
+  //     }
+  //   }
 
-    getTokenCookie();
-  }, []);
+  //   getTokenCookie();
+  // }, []);
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const handleAddDevotee = async () => {
-    const devoteeData = {
-      name: name,
-      dob: dob,
-      phoneNumber: phoneNumber,
-      email: email,
-    };
-    const res = await addDevotee(devoteeData);
-    if (res._id) {
-    }
-  };
+  // const handleAddDevotee = async () => {
+  //   const devoteeData = {
+  //     name: name,
+  //     dob: dob,
+  //     phoneNumber: phoneNumber,
+  //     email: email,
+  //   };
+  //   const res = await addDevotee(devoteeData);
+  //   if (res._id) {
+  //   }
+  // };
 
-  const handleClose = () => setOpen(false);
+  // const handleClose = () => setOpen(false);
   return (
     <>
       <DashboardLayout>
@@ -154,7 +155,7 @@ export default function Table() {
         <Footer />
       </DashboardLayout>
 
-      <Modal
+      {/* <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         open={open}
@@ -240,7 +241,7 @@ export default function Table() {
             </Box>
           </Box>
         </Fade>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

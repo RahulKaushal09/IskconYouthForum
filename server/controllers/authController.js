@@ -6,20 +6,13 @@ const AuthController = {
     try {
       if (!req.body.email || !req.body.password) {
         return res.status(200).json({
-          error: {
-            message: "Validation failed",
-            details: ["email or password is empty"],
-          },
           success: false,
         });
       }
       const response = await authService.login(req.body);
       if (!response) {
         return res.status(200).json({
-          error: {
-            message: "email or password is incorrect",
-            success: false,
-          },
+          success: false,
         });
       }
 
@@ -27,9 +20,11 @@ const AuthController = {
         withCredentials: true,
         httpOnly: true,
       });
-      res.status(200).json({ success: true, token: response.token });
+      res
+        .status(200)
+        .json({ success: true, token: response.token, role: response.role });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ success: false });
     }
   },
   userVerification: async (req, res) => {

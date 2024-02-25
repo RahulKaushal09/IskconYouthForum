@@ -14,7 +14,7 @@ const routes = [
         <AccountCircleIcon />
       </Icon>
     ),
-    route: "/devoteeTable",
+    route: "/devotees",
     component: <Table />,
   },
   {
