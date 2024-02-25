@@ -2,6 +2,7 @@ import Table from "../src/layouts/tables/devoteeTable";
 import SignIn from "../src/layouts/authentication/sign-in";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Icon from "@mui/material/Icon";
+import Presentation from "../src/layouts/pages/presentation";
 
 const routes = [
   {
@@ -22,6 +23,14 @@ const routes = [
     icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
+  },
+  {
+    type: "collapse",
+    name: "Presentation",
+    key: "sign-up",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/presentation",
+    component: <Presentation />,
   },
 ];
 
