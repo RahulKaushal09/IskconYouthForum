@@ -14,17 +14,7 @@ import footerRoutes from "../../../src/footer.routes";
 function Presentation() {
   return (
     <>
-      <DefaultNavbar
-        routes={kitRoutes}
-        action={{
-          type: "external",
-          route: "https://www.creative-tim.com/product/material-kit-react",
-          label: "Sign In",
-          color: "info",
-        }}
-        sticky
-      />
-
+      <DefaultNavbar routes={kitRoutes} isSignInPage={true} />
       <MKBox
         minHeight="75vh"
         width="100%"

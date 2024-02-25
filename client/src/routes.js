@@ -1,5 +1,5 @@
 import Table from "../src/layouts/tables/devoteeTable";
-import SignIn from "../src/layouts/authentication/sign-in";
+import SignIn from "../src/layouts/pages/authentication/sign-in";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Icon from "@mui/material/Icon";
 import Presentation from "../src/layouts/pages/presentation";
@@ -21,7 +21,7 @@ const routes = [
     name: "Sign In",
     key: "sign-in",
     icon: <Icon fontSize="small">login</Icon>,
-    route: "/authentication/sign-in",
+    route: "/pages/authentication/sign-in",
     component: <SignIn />,
   },
   {
