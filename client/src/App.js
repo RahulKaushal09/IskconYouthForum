@@ -24,8 +24,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "../src/assets/theme_kit";
 // Material Dashboard 2 React routes
 import routes from "../src/routes";
+import SideNav from "./components/SideNav/indes";
 
 export default function App() {
+  const { pathname } = useLocation();
+
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
       if (route.collapse) {
@@ -49,6 +52,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      {pathname == "/devotees" ? <SideNav /> : false}
       <Routes>
         {getRoutes(routes)}
         <Route path="*" element={<Navigate to="/home" />} />

@@ -6,7 +6,7 @@ const DevoteeController = {
       const devotees = await devoteeService.getAllDevotees();
       res.status(200).json(devotees);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.json({ success: false });
     }
   },
   addDevotee: async (req, res) => {

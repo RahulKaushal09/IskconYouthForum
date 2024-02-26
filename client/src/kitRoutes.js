@@ -186,7 +186,7 @@ const kitRoutes = [
   },
   {
     name: "sign in",
-    route: "/pages/authentication/sign-in",
+    route: "/signIn",
   },
 ];
 
