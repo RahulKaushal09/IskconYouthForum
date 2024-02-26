@@ -1,8 +1,8 @@
-import Table from "../src/layouts/tables/devoteeTable";
 import SignIn from "../src/layouts/pages/authentication/sign-in";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Icon from "@mui/material/Icon";
-import Presentation from "../src/layouts/pages/presentation";
+import Devotees from "./layouts/tables/devoteeTable/devotees";
+import HomePage from "./layouts/pages/home";
 
 const routes = [
   {
@@ -15,13 +15,13 @@ const routes = [
       </Icon>
     ),
     route: "/devotees",
-    component: <Table />,
+    component: <Devotees />,
   },
   {
     name: "Sign In",
     key: "sign-in",
     icon: <Icon fontSize="small">login</Icon>,
-    route: "/pages/authentication/sign-in",
+    route: "/signIn",
     component: <SignIn />,
   },
   {
@@ -29,8 +29,8 @@ const routes = [
     name: "Presentation",
     key: "sign-up",
     icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/presentation",
-    component: <Presentation />,
+    route: "/home",
+    component: <HomePage />,
   },
 ];
 

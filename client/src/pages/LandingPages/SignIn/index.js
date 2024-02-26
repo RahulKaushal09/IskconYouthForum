@@ -50,6 +50,7 @@ import { signIn } from "../../../services/authApi";
 // react toastify
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 function SignInBasic() {
   const [rememberMe, setRememberMe] = useState(false);
@@ -97,22 +98,37 @@ function SignInBasic() {
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
   const handleSignIn = async () => {
-    const res = await signIn(email, password);
-    if (res.success) {
-      navigate("/devotees", { replace: true });
-    } else {
-      toast.error("Wrong email or password", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-    }
+    try {
+      // const res = await signIn(email, password);
+      const API_BASE_URL = process.env.REACT_APP_API_URL;
+      const { data } = await axios.post(
+        `${API_BASE_URL}/signin`,
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      const { success } = data;
+
+      if (success) {
+        navigate("/devotees", { replace: true });
+      } else {
+        toast.error("Wrong email or password", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
+    } catch (error) {}
   };
 
   return (
@@ -130,8 +146,6 @@ function SignInBasic() {
         theme="light"
         transition={Bounce}
       />
-      {/* Same as */}
-      <ToastContainer />
       <DefaultNavbar routes={routes} transparent light />
       <MKBox
         position="absolute"

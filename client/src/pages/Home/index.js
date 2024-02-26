@@ -6,12 +6,12 @@ import kitRoutes from "../../kitRoutes";
 import bgImage from "../../kitAssests/images/bg-presentation2.png";
 import { Card, Container, Grid } from "@mui/material";
 import MKTypography from "../../componentsKit/MKTypography";
-import Counters from "../../pages/Presentation/sections/Counters";
-import Information from "../../pages/Presentation/sections/Information";
+import Counters from "../../pages/Home/sections/Counters";
+import Information from "../../pages/Home/sections/Information";
 import DefaultFooter from "../../examples/Footers/DefaultFooter";
 import footerRoutes from "../../../src/footer.routes";
 
-function Presentation() {
+function HomePresentation() {
   return (
     <>
       <DefaultNavbar routes={kitRoutes} isSignInPage={true} />
@@ -78,4 +78,4 @@ function Presentation() {
     </>
   );
 }
-export default Presentation;
+export default HomePresentation;

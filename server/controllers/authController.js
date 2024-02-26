@@ -1,5 +1,7 @@
 const authService = require("../services/authService");
 const devoteeService = require("../services/devoteeService");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const AuthController = {
   login: async (req, res) => {
@@ -18,34 +20,39 @@ const AuthController = {
 
       res.cookie("token", response.token, {
         withCredentials: true,
-        httpOnly: true,
+        httpOnly: false,
       });
-      res
-        .status(200)
-        .json({ success: true, token: response.token, role: response.role });
+      return res.status(201).json({
+        success: true,
+      });
     } catch (error) {
-      res.status(500).json({ success: false });
+      return res.json({ success: false });
     }
   },
   userVerification: async (req, res) => {
     try {
-      const { token } = req.body;
-      const decodedToken = await authService.userVerification(token);
-      if (decodedToken) {
-        const devotee = await devoteeService.findDevoteeByid(decodedToken.id);
-        if (!devotee) {
-          res.status(404).json({ status: false });
-        } else {
-          res.status(200).json({ status: true });
-        }
+      const token = req.headers["cookie"].split("=")[1];
+      if (!token) {
+        return res.json({ status: false });
       }
-      res.status(401).json({
-        status: false,
-        error: "Invalid JWT token",
-        message:
-          "The provided JWT token is either expired or invalid. Please authenticate with a valid token.",
+
+      const JWT_SECRET = process.env.JWT_SECRET;
+
+      await jwt.verify(token, JWT_SECRET, async (err, data) => {
+        if (err) {
+          return res.json({ success: false });
+        } else {
+          const devotee = await devoteeService.findDevoteeByid(data.id);
+          if (!devotee) {
+            return res.json({ success: false });
+          } else {
+            res.status(200).json({ success: true });
+          }
+        }
       });
-    } catch (error) {}
+    } catch (error) {
+      return res.json({ success: false });
+    }
   },
 };
 

@@ -24,7 +24,6 @@ const AuthService = {
       const response = {
         token: token,
         success: true,
-        role: devotee.role != null ? devotee.role : null,
       };
       return response;
     } catch (error) {
@@ -35,16 +34,13 @@ const AuthService = {
     try {
       const JWT_SECRET = process.env.JWT_SECRET;
 
-      var decodedToken = await new Promise((resolve, reject) => {
-        jwt.verify(token, JWT_SECRET, (err, decoded) => {
-          if (err) {
-            return reject(err);
-          } else {
-            resolve(decoded);
-          }
-        });
+      await jwt.verify(token, JWT_SECRET, async (err, data) => {
+        if (err) {
+          return false;
+        } else {
+          return data;
+        }
       });
-      return decodedToken;
     } catch (error) {
       return false;
     }

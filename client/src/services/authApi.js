@@ -8,7 +8,7 @@ export async function signIn(email, password) {
       email,
       password,
     });
-    return response.data;
+    return response;
   } catch (error) {
     return false;
   }
