@@ -24,10 +24,6 @@ export default {
       link: "https://www.facebook.com/CreativeTim/",
     },
     {
-      icon: <TwitterIcon />,
-      link: "https://twitter.com/creativetim",
-    },
-    {
       icon: <YouTubeIcon />,
       link: "https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w",
     },

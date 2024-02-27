@@ -8,8 +8,6 @@ import { Card, Container, Grid } from "@mui/material";
 import MKTypography from "../../componentsKit/MKTypography";
 import Counters from "../../pages/Home/sections/Counters";
 import Information from "../../pages/Home/sections/Information";
-import DefaultFooter from "../../examples/Footers/DefaultFooter";
-import footerRoutes from "../../../src/footer.routes";
 
 function HomePresentation() {
   return (
@@ -72,9 +70,6 @@ function HomePresentation() {
         <Counters />
         <Information />
       </Card>
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
-      </MKBox>
     </>
   );
 }

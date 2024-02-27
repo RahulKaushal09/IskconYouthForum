@@ -22,12 +22,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
-import MuiLink from "@mui/material/Link";
-
-// @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
 
 // Material Kit 2 React components
 import MKBox from "../../../componentsKit/MKBox";
@@ -45,7 +39,6 @@ import routes from "../../../kitRoutes";
 // Images
 import bgImage from "../../../kitAssests/images/signIn-background.png";
 import { validateEmail } from "../../../utils/validation";
-import { signIn } from "../../../services/authApi";
 
 // react toastify
 import { Bounce, ToastContainer, toast } from "react-toastify";
