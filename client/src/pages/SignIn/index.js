@@ -24,21 +24,21 @@ import Switch from "@mui/material/Switch";
 import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
-import MKBox from "../../../componentsKit/MKBox";
-import MKTypography from "../../../componentsKit/MKTypography";
-import MKInput from "../../../componentsKit/MKInput";
-import MKButton from "../../../componentsKit/MKButton";
+import MKBox from "../../componentsKit/MKBox";
+import MKTypography from "../../componentsKit/MKTypography";
+import MKInput from "../../componentsKit/MKInput";
+import MKButton from "../../componentsKit/MKButton";
 
 // Material Kit 2 React example components
-import DefaultNavbar from "../../../kitEx/Navbars/DefaultNavbar";
-import SimpleFooter from "../../../kitEx/Footers/SimpleFooter";
+import DefaultNavbar from "../../kitEx/Navbars/DefaultNavbar";
+import SimpleFooter from "../../kitEx/Footers/SimpleFooter";
 
 // Material Kit 2 React page layout routes
-import routes from "../../../kitRoutes";
+import routes from "../../kitRoutes";
 
 // Images
-import bgImage from "../../../kitAssests/images/signIn-background.png";
-import { validateEmail } from "../../../utils/validation";
+import bgImage from "../../kitAssests/images/signIn-background.png";
+import { validateEmail } from "../../utils/validation";
 
 // react toastify
 import { Bounce, ToastContainer, toast } from "react-toastify";
