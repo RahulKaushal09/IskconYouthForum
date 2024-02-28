@@ -3,13 +3,12 @@ import DefaultNavbar from "../../kitEx/Navbars/DefaultNavbar";
 
 import kitRoutes from "../../kitRoutes";
 
-import bgImage from "../../kitAssests/images/bg-presentation2.png";
+import bgImage from "../../assets/images/radhaMadhav_dark.jpg";
 import { Card, Container, Grid } from "@mui/material";
 import MKTypography from "../../componentsKit/MKTypography";
 import Counters from "../../pages/Home/sections/Counters";
 import Information from "../../pages/Home/sections/Information";
 import Footer from "../../pages/Home/sections/Footer"
-import Information2 from "./sections/Information2";
 import Information3 from "./sections/information3";
 function HomePresentation() {
   return (
@@ -31,7 +30,7 @@ function HomePresentation() {
             <MKTypography
               variant="h1"
               color="white"
-              mt={-6}
+              mt={15}
               mb={1}
               sx={({ breakpoints, typography: { size } }) => ({
                 [breakpoints.down("md")]: {

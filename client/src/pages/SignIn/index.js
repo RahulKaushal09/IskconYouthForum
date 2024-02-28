@@ -37,7 +37,7 @@ import SimpleFooter from "../../kitEx/Footers/SimpleFooter";
 import routes from "../../kitRoutes";
 
 // Images
-import bgImage from "../../kitAssests/images/signIn-background.png";
+import bgImage from "../../assets/images/radhamadhavSign.jpg";
 import { validateEmail } from "../../utils/validation";
 
 // react toastify
@@ -121,7 +121,7 @@ function SignInBasic() {
           transition: Bounce,
         });
       }
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (

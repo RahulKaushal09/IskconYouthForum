@@ -1,14 +1,18 @@
 const kitRoutes = [
   {
-    name: "about us",
+    name: "About Us",
     route: "",
   },
   {
-    name: "contact us",
+    name: "Contact Us",
     route: "",
   },
   {
-    name: "sign in",
+    name: "YOUTH PATRON",
+    route: "/Donate",
+  },
+  {
+    name: "Sign In",
     route: "/signIn",
   },
 ];

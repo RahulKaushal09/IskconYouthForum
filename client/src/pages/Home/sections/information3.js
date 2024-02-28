@@ -1,8 +1,20 @@
 import "./main.css"
-import gallery from "../../../assets/images/gallery.jpg"
+import Donate from "../../Donate";
+import { Routes, Route, useNavigate } from 'react-router-dom';
+
+
 function Information3() {
+  const navigate = useNavigate();
+
+  const navigateToDonate = () => {
+    // 👇️ navigate to /contacts
+    navigate('/donate');
+  };
   return (
     <div>
+      <Routes>
+        <Route path="/donate" element={<Donate />} />
+      </Routes>
       <div className="section2">
         <h3 style={{ color: "#344767" }}>ISKCON YOUTH FORUM</h3>
         <br></br>
@@ -33,7 +45,20 @@ function Information3() {
       </video> */}
 
       <div className="section2">
-        <img src={gallery} alt="Images" style={{ width: "100%", borderRadius: "20px" }}></img>
+        <div class="container-coursel">
+          <div class="carousel">
+            <div class="carousel__face"><span>Counselling</span></div>
+            <div class="carousel__face"><span>Parsadam</span></div>
+            <div class="carousel__face"><span>Lectures</span></div>
+            <div class="carousel__face"><span>Meditation</span></div>
+            <div class="carousel__face"><span>Fun</span></div>
+            <div class="carousel__face"><span>Parsadam</span></div>
+            <div class="carousel__face"><span>Trips</span></div>
+            <div class="carousel__face"><span>Meditation</span></div>
+            <div class="carousel__face"><span>Drama</span></div>
+          </div>
+        </div>
+        <div className="corusel-blank" ></div>
       </div>
       <div className="section2" style={{ color: "#344767" }}>
         <h3 >ACTIVITIES AT A GLANCE:</h3>
@@ -68,14 +93,14 @@ function Information3() {
             <p style={{ color: "white" }} >Krishna once said that good deeds made, gifted, frugal, and done without faith are shown as no or “assat.” Therefore, neither here nor below is useful. Let us take a step closer to the devotion of Kanha and do our bit to help others in need.</p>
           </div>
         </div>
-        <div className="Donate-Button">
+        <div className="Donate-Button" onClick={navigateToDonate}>
 
           YOUTH PATRON
         </div>
       </div>
 
-
     </div >
+
   );
 }
 
