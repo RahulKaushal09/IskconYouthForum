@@ -8,7 +8,9 @@ import { Card, Container, Grid } from "@mui/material";
 import MKTypography from "../../componentsKit/MKTypography";
 import Counters from "../../pages/Home/sections/Counters";
 import Information from "../../pages/Home/sections/Information";
-
+import Footer from "../../pages/Home/sections/Footer"
+import Information2 from "./sections/Information2";
+import Information3 from "./sections/information3";
 function HomePresentation() {
   return (
     <>
@@ -69,7 +71,9 @@ function HomePresentation() {
       >
         <Counters />
         <Information />
+        <Information3 />
       </Card>
+      <Footer />
     </>
   );
 }
